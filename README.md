@@ -6,10 +6,10 @@
 
 | Número de Aluno | Nome do Aluno |
 | :--- | :--- |
-| [Ex: 129843] | [Ex: Martim Correia] |
-| [Ex: 129834] | [Ex: Rafael Silva] |
-| [Ex: 129850] | [Ex: Gonçalo Sobral] |
-| [Ex: 129830] | [Ex: Flávio Santos] |
+| [129843] | [Martim Correia] |
+| [129834] | [Rafael Silva] |
+| [129850] | [Gonçalo Sobral] |
+| [129830] | [Flávio Santos] |
 ## Frota dos Descobrimentos
 
 | Navio Atual (Batalha Naval) | Navio Descobrimentos | Dimensão | Quantidade |
