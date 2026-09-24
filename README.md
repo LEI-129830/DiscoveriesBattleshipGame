@@ -1,9 +1,15 @@
 # Battleship
 
-Basic academic version of Battleship game to build upon.
+## Identificação da Equipa
+**Nickname do Grupo:** [Lubrificadores de softwares]
+**Curso:** [LEI] 2026/2027
 
-
-oi equipa
+| Número de Aluno | Nome do Aluno |
+| :--- | :--- |
+| [Ex: 129843] | [Ex: Martim Correia] |
+| [Ex: 129834] | [Ex: Rafael Silva] |
+| [Ex: 129850] | [Ex: Gonçalo Sobral] |
+| [Ex: 129830] | [Ex: Flávio Santos] |
 ## Frota dos Descobrimentos
 
 | Navio Atual (Batalha Naval) | Navio Descobrimentos | Dimensão | Quantidade |
