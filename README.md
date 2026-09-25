@@ -26,3 +26,37 @@ Para mais informações sobre o jogo, consulte [aqui](https://pt.wikipedia.org/w
 | Navio de 3 canhões | [Nau](https://pt.wikipedia.org/wiki/Nau)            | 3 | 2 |
 | Navio de 2 canhões | [Caravela](https://pt.wikipedia.org/wiki/Caravela)  | 2 | 3 |
 | Submarino | [Barca](https://pt.wikipedia.org/wiki/Barca)        | 1 | 4 |
+
+## Exemplo de Mapa
+
+Durante o jogo, cada jogador vê duas grelhas: **o seu mar**, onde estão os seus navios e os tiros que o adversário acertou, e **o mar do adversário**, onde só é visível o resultado dos seus próprios tiros.
+
+```
+        O MEU MAR                 MAR DO ADVERSÁRIO
+    1 2 3 4 5 6 7 8 9 10          1 2 3 4 5 6 7 8 9 10
+ 1  ~ N N N ~ ~ ~ ~ C ~        1  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+ 2  ~ N X N ~ ~ ~ ~ C ~        2  ~ ~ ~ O ~ ~ ~ ~ ~ ~
+ 3  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~        3  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+ 4  G G G G G ~ ~ ~ ~ ~        4  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+ 5  ~ ~ ~ ~ ~ ~ F ~ ~ C        5  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+ 6  C ~ ~ O ~ ~ F ~ ~ C        6  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+ 7  C ~ ~ ~ ~ ~ F ~ ~ ~        7  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+ 8  ~ ~ ~ B ~ ~ F ~ ~ ~        8  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+ 9  ~ B ~ ~ ~ ~ ~ ~ ~ ~        9  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+10  ~ ~ ~ B ~ ~ B ~ ~ ~       10  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+```
+
+**Legenda:**
+
+| Símbolo | Significado |
+| :--- | :--- |
+| `~` | Água |
+| `G` | Galeão |
+| `F` | Fragata |
+| `N` | Nau |
+| `C` | Caravela |
+| `B` | Barca |
+| `X` | Tiro que acertou num navio |
+| `O` | Tiro que falhou |
+
+No mar do adversário, apenas os símbolos `X` e `O` são visíveis - a posição dos navios inimigos nunca é revelada.
