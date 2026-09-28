@@ -8,7 +8,7 @@ oponente antes que este consiga destruir os seus, combinando estratégia, lógic
 Para mais informações sobre o jogo, consulte [aqui](https://pt.wikipedia.org/wiki/Batalha_naval_(jogo)).
 
 ## Identificação da Equipa
-**Nickname do Grupo:** [Lubrificadores de softwares]
+**Nickname do Grupo:** [RMFG]
 **Curso:** [LEI] 2026/2027
 
 | Número de Aluno | Nome do Aluno |
