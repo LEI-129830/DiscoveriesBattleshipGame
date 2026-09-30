@@ -3,6 +3,10 @@
  */
 package iscteiul.ista.battleship;
 
+/**
+ * Representa uma Barca ocupando apenas
+ * uma posição no tabuleiro.
+ */
 public class Barge extends Ship {
     private static final Integer SIZE = 1;
     private static final String NAME = "Barca";
@@ -16,6 +20,11 @@ public class Barge extends Ship {
         getPositions().add(new Position(pos.getRow(), pos.getColumn()));
     }
 
+    /*
+     * (non-Javadoc)
+     *
+     * @see battleship.IShip#getSize()
+     */
     @Override
     public Integer getSize() {
         return SIZE;
