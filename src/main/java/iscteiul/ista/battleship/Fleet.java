@@ -6,6 +6,11 @@ package iscteiul.ista.battleship;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementação por omissão de {@link IFleet}, gerindo um conjunto de navios
+ * pertencentes a um jogador, garantindo os limites do tabuleiro e o
+ * espaçamento entre os navios.
+ */
 public class Fleet implements IFleet {
     /**
      * This operation prints all the given ships
@@ -21,6 +26,9 @@ public class Fleet implements IFleet {
 
     private List<IShip> ships;
 
+    /**
+     * Cria uma nova frota, vazia.
+     */
     public Fleet() {
         ships = new ArrayList<>();
     }
@@ -88,11 +96,24 @@ public class Fleet implements IFleet {
         return null;
     }
 
+    /**
+     * Verifica se um navio cabe inteiramente dentro dos limites do tabuleiro.
+     *
+     * @param s o navio a verificar
+     * @return {@code true} se o navio estiver totalmente dentro do tabuleiro, {@code false} caso contrário
+     */
     private boolean isInsideBoard(IShip s) {
         return (s.getLeftMostPos() >= 0 && s.getRightMostPos() <= BOARD_SIZE - 1 && s.getTopMostPos() >= 0
                 && s.getBottomMostPos() <= BOARD_SIZE - 1);
     }
 
+    /**
+     * Verifica se um navio está demasiado próximo (a tocar ou a sobrepor-se)
+     * de algum navio já presente na frota.
+     *
+     * @param s o navio a verificar
+     * @return {@code true} se existir risco de colisão, {@code false} caso contrário
+     */
     private boolean colisionRisk(IShip s) {
         for (int i = 0; i < ships.size(); i++) {
             if (ships.get(i).tooCloseTo(s))

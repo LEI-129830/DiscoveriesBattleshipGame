@@ -7,6 +7,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Classe base abstrata para todos os navios da frota.
+ * <p>
+ * Um navio tem uma categoria (nome), uma orientação, uma posição de âncora,
+ * e a lista de posições individuais do tabuleiro que ocupa. As subclasses
+ * concretas (ex.: {@link Barge}, {@link Caravel}, {@link Carrack},
+ * {@link Frigate}, {@link Galleon}) definem o tamanho do navio e a forma
+ * como as suas posições são construídas.
+ */
 public abstract class Ship implements IShip {
 
     private static final String GALEAO = "galeao";
@@ -16,10 +25,13 @@ public abstract class Ship implements IShip {
     private static final String BARCA = "barca";
 
     /**
-     * @param shipKind
-     * @param bearing
-     * @param pos
-     * @return
+     * Método de fábrica que constrói um navio do tipo indicado, na posição
+     * e orientação dadas.
+     *
+     * @param shipKind o tipo de navio a construir (ex.: "galeao", "fragata", "nau", "caravela", "barca")
+     * @param bearing  a orientação do navio
+     * @param pos      a posição de âncora do navio
+     * @return uma nova instância de {@link Ship} correspondente a {@code shipKind}, ou {@code null} se o tipo não for reconhecido
      */
     static Ship buildShip(String shipKind, Compass bearing, Position pos) {
         Ship s;
@@ -53,9 +65,11 @@ public abstract class Ship implements IShip {
 
 
     /**
-     * @param category
-     * @param bearing
-     * @param pos
+     * Cria um novo navio com a categoria, orientação e posição de âncora dadas.
+     *
+     * @param category o nome da categoria do navio
+     * @param bearing  a orientação do navio; não pode ser {@code null}
+     * @param pos      a posição de âncora do navio; não pode ser {@code null}
      */
     public Ship(String category, Compass bearing, IPosition pos) {
         assert bearing != null;
@@ -78,7 +92,7 @@ public abstract class Ship implements IShip {
     }
 
     /**
-     * @return the positions
+     * @return as posições ocupadas pelo navio
      */
     public List<IPosition> getPositions() {
         return positions;
@@ -234,7 +248,12 @@ public abstract class Ship implements IShip {
         }
     }
 
-
+    /**
+     * Devolve uma representação em texto deste navio, incluindo a sua
+     * categoria, orientação e posição de âncora.
+     *
+     * @return uma string no formato {@code "[categoria orientação posição]"}
+     */
     @Override
     public String toString() {
         return "[" + category + " " + bearing + " " + pos + "]";
