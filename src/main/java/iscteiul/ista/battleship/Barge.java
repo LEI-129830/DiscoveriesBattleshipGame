@@ -22,7 +22,7 @@ public class Barge extends Ship {
 
     /*
      * (non-Javadoc)
-     *
+     * Obtém o tamanho da Barca.
      * @see battleship.IShip#getSize()
      */
     @Override
