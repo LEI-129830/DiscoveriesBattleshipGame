@@ -18,7 +18,7 @@ public interface IPosition {
     boolean equals(Object other);
 
     /**
-     * Valida a proximidade imediata em relação a outra posição (vizinhança ortogonal ou diagonal)[cite: 3].
+     * Valida a proximidade imediata em relação a outra posição (vizinhança ortogonal ou diagonal).
      * Crítico para impor regras de colocação de navios (ex: impedir navios colados).
      */
     boolean isAdjacentTo(IPosition other);
