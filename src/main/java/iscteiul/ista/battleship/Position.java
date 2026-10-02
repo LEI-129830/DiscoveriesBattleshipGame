@@ -12,6 +12,7 @@ public class Position implements IPosition {
     private boolean isHit;
 
     /**
+     * Representa uma posicao do tabuleiro identificada pela sua linha e coluna
      *
      */
     public Position(int row, int column) {
@@ -114,6 +115,11 @@ public class Position implements IPosition {
         return isHit;
     }
 
+    /**
+     * Retorna uma representacao textual da linha e coluna desta posicao
+     *
+     * @return A representacao textual da posicao
+     */
     @Override
     public String toString() {
         return ("Linha = " + row + " Coluna = " + column);
