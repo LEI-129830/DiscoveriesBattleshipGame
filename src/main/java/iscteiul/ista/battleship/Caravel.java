@@ -8,6 +8,8 @@ public class Caravel extends Ship {
     private static final String NAME = "Caravela";
 
     /**
+     * Cria uma caravela com a dada orientacao e posicao de referencia
+     *
      * @param bearing the bearing where the Caravel heads to
      * @param pos     initial point for positioning the Caravel
      */
