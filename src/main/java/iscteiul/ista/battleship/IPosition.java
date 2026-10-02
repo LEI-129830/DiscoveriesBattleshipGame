@@ -8,8 +8,6 @@ package iscteiul.ista.battleship;
  * da célula (presença de embarcação e histórico de disparos recebidos).
  * </p>
  *
- * @author fba
- * @version 1.0
  */
 public interface IPosition {
 
