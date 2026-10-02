@@ -1,25 +1,44 @@
-/**
- *
- */
 package iscteiul.ista.battleship;
 
+/**
+ * Representa um Galeão (Galleon) no jogo Batalha Naval.
+ * <p>
+ * O Galeão é uma embarcação de tamanho 5 com geometria não linear (formato em T).
+ * A distribuição das suas posições na matriz de jogo depende da orientação cardeal
+ * fornecida na sua instanciação.
+ * </p>
+ *
+ * @see Ship
+ * @see IPosition
+ * @see Compass
+ */
 public class Galleon extends Ship {
-    private static final Integer SIZE = 5;          //Tamanho imutável da embarcação
-    private static final String NAME = "Galeao";    //Nome da embarcação
+
+    /** Número fixo de células ocupadas pelo Galeão. */
+    private static final Integer SIZE = 5;
+
+    /** Designação textual da embarcação. */
+    private static final String NAME = "Galeao";
 
     /**
-     * @param bearing
-     * @param pos
+     * Constrói e inicializa um Galeão com orientação e coordenada de origem especificadas.
+     * <p>
+     * Delega a montagem da geometria do casco em T para métodos especializados
+     * consoante a orientação cardeal passada por argumento.
+     * </p>
+     *
+     * @param bearing Ponto cardeal de orientação ({@link Compass}).
+     * @param pos Ponto de ancoragem a partir do qual as restantes células são calculadas.
+     * @throws NullPointerException Se {@code bearing} for {@code null}.
+     * @throws IllegalArgumentException Se for fornecido um rumo não reconhecido pelo algoritmo.
      */
-
-    //Construtor
     public Galleon(Compass bearing, IPosition pos) throws IllegalArgumentException {
-        //Inicializa o Barco na superclasse
         super(Galleon.NAME, bearing, pos);
 
-        if (bearing == null)        //previne a propagação de Null Pointer
+        if (bearing == null) {
             throw new NullPointerException("ERROR! invalid bearing for the galleon");
-        //Calculo do "Shape" para as funções privadas de acordo com a direção a seguir
+        }
+
         switch (bearing) {
             case NORTH:
                 fillNorth(pos);
@@ -33,16 +52,15 @@ public class Galleon extends Ship {
             case WEST:
                 fillWest(pos);
                 break;
-
             default:
                 throw new IllegalArgumentException("ERROR! invalid bearing for the galleon");
         }
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Devolve a dimensão total ocupada pelo Galeão.
      *
-     * @see battleship.Ship#getSize()
+     * @return O número de blocos do navio (sempre 5).
      */
     @Override
     public Integer getSize() {
@@ -50,34 +68,37 @@ public class Galleon extends Ship {
     }
 
     /**
-     * Desenha um "T" apontado a Norte.
-     * Ex: [0,0] [0,1] [0,2]
-     *           [1,1]
-     *           [2,1]
+     * Preenche as 5 coordenadas da embarcação com orientação Norte (formato de T vertical padrão).
+     *
+     * @param pos Coordenada de topo esquerda da barra horizontal superior.
      */
     private void fillNorth(IPosition pos) {
-        //Linha Horizontal de 3 blocos
         for (int i = 0; i < 3; i++) {
             getPositions().add(new Position(pos.getRow(), pos.getColumn() + i));
         }
-        //Linha vertical do T
         getPositions().add(new Position(pos.getRow() + 1, pos.getColumn() + 1));
         getPositions().add(new Position(pos.getRow() + 2, pos.getColumn() + 1));
     }
 
-    //Desenha o Navio virado para Sul (a apontar para cima)
+    /**
+     * Preenche as 5 coordenadas da embarcação com orientação Sul (formato de T invertido).
+     *
+     * @param pos Coordenada de topo da haste vertical.
+     */
     private void fillSouth(IPosition pos) {
-        //Linha Vertical
         for (int i = 0; i < 2; i++) {
             getPositions().add(new Position(pos.getRow() + i, pos.getColumn()));
         }
-        //Base horizonatal
         for (int j = 2; j < 5; j++) {
             getPositions().add(new Position(pos.getRow() + 2, pos.getColumn() + j - 3));
         }
     }
 
-    //Desenha o Navio virado para Este
+    /**
+     * Preenche as 5 coordenadas da embarcação com orientação Este (T voltado para a esquerda).
+     *
+     * @param pos Coordenada da extremidade superior da barra vertical traseira.
+     */
     private void fillEast(IPosition pos) {
         getPositions().add(new Position(pos.getRow(), pos.getColumn()));
         for (int i = 1; i < 4; i++) {
@@ -86,7 +107,11 @@ public class Galleon extends Ship {
         getPositions().add(new Position(pos.getRow() + 2, pos.getColumn()));
     }
 
-    //Desenha o Navio virado para Oeste
+    /**
+     * Preenche as 5 coordenadas da embarcação com orientação Oeste (T voltado para a direita).
+     *
+     * @param pos Coordenada da extremidade superior da barra vertical traseira.
+     */
     private void fillWest(IPosition pos) {
         getPositions().add(new Position(pos.getRow(), pos.getColumn()));
         for (int i = 1; i < 4; i++) {
@@ -94,5 +119,4 @@ public class Galleon extends Ship {
         }
         getPositions().add(new Position(pos.getRow() + 2, pos.getColumn()));
     }
-
 }

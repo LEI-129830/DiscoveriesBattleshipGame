@@ -1,48 +1,68 @@
-/**
- *
- */
 package iscteiul.ista.battleship;
 
+/**
+ * Representa uma Nau (Carrack) na mecânica do jogo Batalha Naval.
+ * <p>
+ * Trata-se de uma embarcação linear rígida de dimensão 3 que se estende
+ * de forma unilinear a partir de um ponto âncora, variando conforme a orientação.
+ * </p>
+ *
+ * @see Ship
+ * @see IPosition
+ * @see Compass
+ */
 public class Carrack extends Ship {
+
+    /** Número fixo de células ocupadas pela Nau. */
     private static final Integer SIZE = 3;
+
+    /** Designação textual da embarcação para efeitos de registo e apresentação. */
     private static final String NAME = "Nau";
 
     /**
-     * @param bearing
-     * @param pos
+     * Constrói uma nova Nau com uma orientação e posição âncora definidas.
+     * <p>
+     * Consoante o rumo ({@link Compass}) fornecido, calcula e adiciona as
+     * 3 posições contíguas ocupadas pelo navio à coleção interna herdada.
+     * </p>
+     *
+     * @param bearing Orientação cardeal da embarcação ({@code NORTH}, {@code SOUTH}, {@code EAST} ou {@code WEST}).
+     * @param pos Posição inicial (âncora) de referência a partir da qual o corpo é gerado.
+     * @throws NullPointerException Se a orientação {@code bearing} for nula.
+     * @throws IllegalArgumentException Se o rumo especificado não corresponder a uma direção válida suportada.
      */
     public Carrack(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Carrack.NAME, bearing, pos);
 
-        //direção -> cálculo da geometria do navio na grelha
+        if (bearing == null) {
+            throw new NullPointerException("ERROR! invalid bearing for the carrack");
+        }
+
         switch (bearing) {
             case NORTH:
             case SOUTH:
-                // Se for NORTE ou SUL, o navio é criado numa linha vertical para baixo
-                for (int r = 0; r < SIZE; r++)
-                    // Incrementa as linhas. A coluna mantém-se estátic
+                for (int r = 0; r < SIZE; r++) {
                     getPositions().add(new Position(pos.getRow() + r, pos.getColumn()));
+                }
                 break;
             case EAST:
             case WEST:
-                // Se for ESTE ou OESTE, o navio é desenhado numa linha horizontal para a direita
-                for (int c = 0; c < SIZE; c++)
-                    //Apenas as colunas são incrementadas. A linha mantém se estática
+                for (int c = 0; c < SIZE; c++) {
                     getPositions().add(new Position(pos.getRow(), pos.getColumn() + c));
+                }
                 break;
             default:
                 throw new IllegalArgumentException("ERROR! invalid bearing for the carrack");
         }
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Devolve o tamanho da Nau.
      *
-     * @see battleship.Ship#getSize()
+     * @return O número de posições ocupadas pela embarcação (sempre 3).
      */
     @Override
     public Integer getSize() {
         return Carrack.SIZE;
-    }       //Retorna o 3 Blocos que a Carrack ocupa
-
+    }
 }
