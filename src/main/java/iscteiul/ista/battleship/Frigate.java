@@ -10,8 +10,8 @@ public class Frigate extends Ship {
     /**
      * Cria uma nova fragata com a orientacao e posicao de referencia especificadas
      *
-     * @param bearing the bearing where the Caravel heads to
-     * @param pos initial point for positioning the Caravel
+     * @param bearing the bearing where the Frigate heads to
+     * @param pos initial point for positioning the Frigate
      */
     public Frigate(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Frigate.NAME, bearing, pos);
